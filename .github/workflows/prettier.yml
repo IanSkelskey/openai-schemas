@@ -9,5 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+        with:
+          node-version: '14' # Specify the Node.js version
       - run: npm install
       - run: npm run prettier
