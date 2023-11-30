@@ -12,7 +12,17 @@ This repository is dedicated to storing and sharing JSON schemas for custom GPTs
 
 ### ![Spotify Logo](assets/spotify.svg) Spotify API Schema
 
-- `spotify.json`: This file provides a schema for the Spotify API. It includes structures for retrieving information about Spotify users, their playlists, and tracks. The schema details the required parameters and the format of the expected response, including playlist details, track information, and user data.
+- `spotify/`: Contains the modularized schema files for the Spotify API, with individual endpoint descriptions.
+  - `main.json`: Acts as the master file linking to all modular endpoint schemas.
+  - `audio-features.json`, `me/playlists.json`, etc.: Define specific endpoints.
+
+## Modular Endpoint Schemas
+
+The individual endpoint schemas for each API are stored in the parent directory for each API (e.g. `spotify/` for Spotify API). These schemas are modularized to allow for easier maintenance and updating of the schemas. The modular endpoint schemas are linked together by the main schema file (e.g. `spotify/main.json`).
+
+### Building the Schema from Modules
+
+- `npm run build`: Builds the master schema file `spotify/main.json` from the modular endpoint schemas in `spotify/`. Outputs to `build/spotify.json`.
 
 ## Usage
 
