@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "This repository is dedicated to storing and sharing JSON schemas for custom GPTs (Generative Pre-trained Transformers). These schemas are designed to define the structure and expected data for various APIs, making it easier to integrate and work with different services using custom GPTs.",
   "scripts": {
-    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "build": "python scripts/build.py"
   },
   "author": "Ian Skelskey",
   "devDependencies": {
