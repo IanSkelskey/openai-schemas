@@ -1,115 +1,115 @@
 {
-    "get": {
-      "operationId": "getPlaylistTracks",
-      "summary": "Get full details of the items of a playlist owned by a Spotify user.",
-      "parameters": [
-        {
-          "name": "playlist_id",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "description": "The Spotify ID of the playlist."
+  "get": {
+    "operationId": "getPlaylistTracks",
+    "summary": "Get full details of the items of a playlist owned by a Spotify user.",
+    "parameters": [
+      {
+        "name": "playlist_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
         },
-        {
-          "name": "market",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "type": "string"
-          },
-          "description": "ISO 3166-1 alpha-2 country code."
+        "description": "The Spotify ID of the playlist."
+      },
+      {
+        "name": "market",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
         },
-        {
-          "name": "fields",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "type": "string"
-          },
-          "description": "Filters for the query."
+        "description": "ISO 3166-1 alpha-2 country code."
+      },
+      {
+        "name": "fields",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
         },
-        {
-          "name": "limit",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "type": "integer",
-            "default": 20,
-            "minimum": 1,
-            "maximum": 50
-          },
-          "description": "The maximum number of items to return."
+        "description": "Filters for the query."
+      },
+      {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 20,
+          "minimum": 1,
+          "maximum": 50
         },
-        {
-          "name": "offset",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "type": "integer",
-            "default": 0
-          },
-          "description": "The index of the first item to return."
+        "description": "The maximum number of items to return."
+      },
+      {
+        "name": "offset",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 0
         },
-        {
-          "name": "additional_types",
-          "in": "query",
-          "required": false,
-          "schema": {
-            "type": "string"
-          },
-          "description": "Comma-separated list of item types besides 'track'."
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "A successful response.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "href": {
-                    "type": "string"
-                  },
-                  "limit": {
-                    "type": "integer"
-                  },
-                  "next": {
-                    "type": "string",
-                    "nullable": true
-                  },
-                  "offset": {
-                    "type": "integer"
-                  },
-                  "previous": {
-                    "type": "string",
-                    "nullable": true
-                  },
-                  "total": {
-                    "type": "integer"
-                  },
+        "description": "The index of the first item to return."
+      },
+      {
+        "name": "additional_types",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "description": "Comma-separated list of item types besides 'track'."
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "A successful response.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                },
+                "limit": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "nullable": true
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "previous": {
+                  "type": "string",
+                  "nullable": true
+                },
+                "total": {
+                  "type": "integer"
+                },
+                "items": {
+                  "type": "array",
                   "items": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/PlaylistTrackObject"
-                    }
+                    "$ref": "#/components/schemas/PlaylistTrackObject"
                   }
                 }
               }
             }
           }
-        },
-        "401": {
-          "description": "Unauthorized"
-        },
-        "403": {
-          "description": "Forbidden"
-        },
-        "429": {
-          "description": "Too Many Requests"
         }
+      },
+      "401": {
+        "description": "Unauthorized"
+      },
+      "403": {
+        "description": "Forbidden"
+      },
+      "429": {
+        "description": "Too Many Requests"
       }
     }
   }
+}

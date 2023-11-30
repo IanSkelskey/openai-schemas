@@ -1,78 +1,142 @@
 {
-    "get": {
-      "operationId": "getTrack",
-      "summary": "Get a track",
-      "parameters": [
-        {
-          "name": "track_id",
-          "in": "path",
-          "required": true,
-          "description": "The track ID",
-          "schema": {
-            "type": "string"
-          }
-        },
-        {
-          "name": "market",
-          "in": "query",
-          "required": false,
-          "description": "The market",
-          "schema": {
-            "type": "string"
-          }
+  "get": {
+    "operationId": "getTrack",
+    "summary": "Get a track",
+    "parameters": [
+      {
+        "name": "track_id",
+        "in": "path",
+        "required": true,
+        "description": "The track ID",
+        "schema": {
+          "type": "string"
         }
-      ],
-      "responses": {
-        "200": {
-          "description": "The track",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "album": {
-                    "type": "object",
-                    "properties": {
-                      "album_type": {
-                        "type": "string"
-                      },
-                      "artists": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "external_urls": {
-                              "type": "object",
-                              "properties": {
-                                "spotify": {
-                                  "type": "string"
-                                }
+      },
+      {
+        "name": "market",
+        "in": "query",
+        "required": false,
+        "description": "The market",
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "The track",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "album": {
+                  "type": "object",
+                  "properties": {
+                    "album_type": {
+                      "type": "string"
+                    },
+                    "artists": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "external_urls": {
+                            "type": "object",
+                            "properties": {
+                              "spotify": {
+                                "type": "string"
                               }
-                            },
-                            "href": {
-                              "type": "string"
-                            },
-                            "id": {
-                              "type": "string"
-                            },
-                            "name": {
-                              "type": "string"
-                            },
-                            "type": {
-                              "type": "string"
-                            },
-                            "uri": {
-                              "type": "string"
                             }
+                          },
+                          "href": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "uri": {
+                            "type": "string"
                           }
                         }
-                      },
-                      "available_markets": {
-                        "type": "array",
-                        "items": {
+                      }
+                    },
+                    "available_markets": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "external_urls": {
+                      "type": "object",
+                      "properties": {
+                        "spotify": {
                           "type": "string"
                         }
-                      },
+                      }
+                    },
+                    "href": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "images": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "height": {
+                            "type": "integer"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "width": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "release_date": {
+                      "type": "string"
+                    },
+                    "release_date_precision": {
+                      "type": "string"
+                    },
+                    "restrictions": {
+                      "type": "object",
+                      "properties": {
+                        "reason": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "uri": {
+                      "type": "string"
+                    },
+                    "total_tracks": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "artists": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
                       "external_urls": {
                         "type": "object",
                         "properties": {
@@ -87,154 +151,90 @@
                       "id": {
                         "type": "string"
                       },
-                      "images": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "height": {
-                              "type": "integer"
-                            },
-                            "url": {
-                              "type": "string"
-                            },
-                            "width": {
-                              "type": "integer"
-                            }
-                          }
-                        }
-                      },
                       "name": {
                         "type": "string"
-                      },
-                      "release_date": {
-                        "type": "string"
-                      },
-                      "release_date_precision": {
-                        "type": "string"
-                      },
-                      "restrictions": {
-                        "type": "object",
-                        "properties": {
-                          "reason": {
-                            "type": "string"
-                          }
-                        }
                       },
                       "type": {
                         "type": "string"
                       },
                       "uri": {
                         "type": "string"
-                      },
-                      "total_tracks": {
-                        "type": "integer"
                       }
                     }
-                  },
-                  "artists": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "external_urls": {
-                          "type": "object",
-                          "properties": {
-                            "spotify": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "href": {
-                          "type": "string"
-                        },
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "type": {
-                          "type": "string"
-                        },
-                        "uri": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  },
-                  "available_markets": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "disc_number": {
-                    "type": "integer"
-                  },
-                  "duration_ms": {
-                    "type": "integer"
-                  },
-                  "explicit": {
-                    "type": "boolean"
-                  },
-                  "external_ids": {
-                    "type": "object",
-                    "properties": {
-                      "isrc": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "external_urls": {
-                    "type": "object",
-                    "properties": {
-                      "spotify": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "href": {
-                    "type": "string"
-                  },
-                  "id": {
-                    "type": "string"
-                  },
-                  "is_local": {
-                    "type": "boolean"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "popularity": {
-                    "type": "integer"
-                  },
-                  "preview_url": {
-                    "type": "string"
-                  },
-                  "track_number": {
-                    "type": "integer"
-                  },
-                  "type": {
-                    "type": "string"
-                  },
-                  "uri": {
+                  }
+                },
+                "available_markets": {
+                  "type": "array",
+                  "items": {
                     "type": "string"
                   }
+                },
+                "disc_number": {
+                  "type": "integer"
+                },
+                "duration_ms": {
+                  "type": "integer"
+                },
+                "explicit": {
+                  "type": "boolean"
+                },
+                "external_ids": {
+                  "type": "object",
+                  "properties": {
+                    "isrc": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "external_urls": {
+                  "type": "object",
+                  "properties": {
+                    "spotify": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "href": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "is_local": {
+                  "type": "boolean"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "popularity": {
+                  "type": "integer"
+                },
+                "preview_url": {
+                  "type": "string"
+                },
+                "track_number": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "uri": {
+                  "type": "string"
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "429": {
-            "description": "Too Many Requests"
           }
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "429": {
+          "description": "Too Many Requests"
         }
       }
     }
   }
+}

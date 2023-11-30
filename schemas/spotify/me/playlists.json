@@ -1,160 +1,159 @@
 {
-    "get": {
-      "operationId": "getMyPlaylists",
-      "summary": "Get a list of the authenticated user's playlists",
-      "parameters": [
-        {
-          "name": "limit",
-          "in": "query",
-          "required": false,
-          "description": "The maximum number of playlists to return",
-          "schema": {
-            "type": "integer"
-          }
-        },
-        {
-          "name": "offset",
-          "in": "query",
-          "required": false,
-          "description": "The index of the first playlist to return",
-          "schema": {
-            "type": "integer"
-          }
+  "get": {
+    "operationId": "getMyPlaylists",
+    "summary": "Get a list of the authenticated user's playlists",
+    "parameters": [
+      {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "description": "The maximum number of playlists to return",
+        "schema": {
+          "type": "integer"
         }
-      ],
-      "responses": {
-        "200": {
-          "description": "The playlists",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "href": {
-                    "type": "string"
-                  },
-                  "limit": {
-                    "type": "integer"
-                  },
-                  "next": {
-                    "type": "string"
-                  },
-                  "offset": {
-                    "type": "integer"
-                  },
-                  "previous": {
-                    "type": "string"
-                  },
-                  "total": {
-                    "type": "integer"
-                  },
+      },
+      {
+        "name": "offset",
+        "in": "query",
+        "required": false,
+        "description": "The index of the first playlist to return",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "The playlists",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                },
+                "limit": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string"
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "previous": {
+                  "type": "string"
+                },
+                "total": {
+                  "type": "integer"
+                },
+                "items": {
+                  "type": "array",
                   "items": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "collaborative": {
-                          "type": "boolean"
-                        },
-                        "description": {
-                          "type": "string"
-                        },
-                        "external_urls": {
+                    "type": "object",
+                    "properties": {
+                      "collaborative": {
+                        "type": "boolean"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "external_urls": {
+                        "type": "object",
+                        "properties": {
+                          "spotify": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "href": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "images": {
+                        "type": "array",
+                        "items": {
                           "type": "object",
                           "properties": {
-                            "spotify": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "href": {
-                          "type": "string"
-                        },
-                        "id": {
-                          "type": "string"
-                        },
-                        "images": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "height": {
-                                "type": "integer"
-                              },
-                              "url": {
-                                "type": "string"
-                              },
-                              "width": {
-                                "type": "integer"
-                              }
-                            }
-                          }
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "owner": {
-                          "type": "object",
-                          "properties": {
-                            "external_urls": {
-                              "type": "object",
-                              "properties": {
-                                "spotify": {
-                                  "type": "string"
-                                }
-                              }
+                            "height": {
+                              "type": "integer"
                             },
-                            "followers": {
-                              "type": "object",
-                              "properties": {
-                                "href": {
-                                  "type": "string"
-                                },
-                                "total": {
-                                  "type": "integer"
-                                }
-                              }
-                            },
-                            "href": {
+                            "url": {
                               "type": "string"
                             },
-                            "id": {
-                              "type": "string"
-                            },
-                            "type": {
-                              "type": "string"
-                            },
-                            "uri": {
-                              "type": "string"
-                            },
-                            "display_name": {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "public": {
-                          "type": "boolean"
-                        },
-                        "snapshot_id": {
-                          "type": "string"
-                        },
-                        "tracks": {
-                          "type": "object",
-                          "properties": {
-                            "href": {
-                              "type": "string"
-                            },
-                            "total": {
+                            "width": {
                               "type": "integer"
                             }
                           }
-                        },
-                        "type": {
-                          "type": "string"
-                        },
-                        "uri": {
-                          "type": "string"
                         }
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "owner": {
+                        "type": "object",
+                        "properties": {
+                          "external_urls": {
+                            "type": "object",
+                            "properties": {
+                              "spotify": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "followers": {
+                            "type": "object",
+                            "properties": {
+                              "href": {
+                                "type": "string"
+                              },
+                              "total": {
+                                "type": "integer"
+                              }
+                            }
+                          },
+                          "href": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "uri": {
+                            "type": "string"
+                          },
+                          "display_name": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "public": {
+                        "type": "boolean"
+                      },
+                      "snapshot_id": {
+                        "type": "string"
+                      },
+                      "tracks": {
+                        "type": "object",
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          },
+                          "total": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "uri": {
+                        "type": "string"
                       }
                     }
                   }
@@ -166,3 +165,4 @@
       }
     }
   }
+}
