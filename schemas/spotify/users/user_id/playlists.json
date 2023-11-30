@@ -1,0 +1,137 @@
+{
+    "get": {
+      "operationId": "getUserPlaylists",
+      "summary": "Get a list of a user's playlists",
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "description": "The user ID",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "limit",
+          "in": "query",
+          "required": false,
+          "description": "The maximum number of playlists to return",
+          "schema": {
+            "type": "integer"
+          }
+        },
+        {
+          "name": "offset",
+          "in": "query",
+          "required": false,
+          "description": "The index of the first playlist to return",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "The user's playlists",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "collaborative": {
+                          "type": "boolean"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "external_urls": {
+                          "type": "object",
+                          "properties": {
+                            "spotify": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "followers": {
+                          "type": "object",
+                          "properties": {
+                            "href": {
+                              "type": "string"
+                            },
+                            "total": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "href": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "images": {
+                          "type": "array",
+                          "items": {
+                            "url": {
+                              "type": "string"
+                            },
+                            "height": {
+                              "type": "integer"
+                            },
+                            "width": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "owner": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "display_name": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "limit": {
+                    "type": "integer"
+                  },
+                  "next": {
+                    "type": "string"
+                  },
+                  "offset": {
+                    "type": "integer"
+                  },
+                  "previous": {
+                    "type": "string"
+                  },
+                  "total": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "User not found"
+        }
+      }
+    }
+  }

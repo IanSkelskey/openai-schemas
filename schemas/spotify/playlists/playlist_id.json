@@ -1,0 +1,150 @@
+{
+    "get": {
+      "operationId": "getPlaylist",
+      "summary": "Get a playlist",
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "in": "path",
+          "required": true,
+          "description": "The playlist ID",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "fields",
+          "in": "query",
+          "required": false,
+          "description": "A comma-separated list of fields to return",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "The playlist",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "collaborative": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "external_urls": {
+                    "type": "object",
+                    "properties": {
+                      "spotify": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "followers": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string"
+                      },
+                      "total": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "href": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "images": {
+                    "type": "array",
+                    "items": {
+                      "url": {
+                        "type": "string"
+                      },
+                      "height": {
+                        "type": "integer"
+                      },
+                      "width": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "owner": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "display_name": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "tracks": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string"
+                      },
+                      "limit": {
+                        "type": "integer"
+                      },
+                      "next": {
+                        "type": "string"
+                      },
+                      "offset": {
+                        "type": "integer"
+                      },
+                      "previous": {
+                        "type": "string"
+                      },
+                      "total": {
+                        "type": "integer"
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "added_at": {
+                              "type": "string"
+                            },
+                            "added_by": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "display_name": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "is_local": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Playlist not found"
+        }
+      }
+    }
+  }
