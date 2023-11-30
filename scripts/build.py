@@ -9,13 +9,12 @@ def save_json_file(data, file_path):
     with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(data, file, indent=4)
 
-def build_spotify_schema():
+def build_api_schema(api_name):
     script_dir = os.path.dirname(__file__)
-    base_path = os.path.normpath(os.path.join(script_dir, '../schemas/spotify/'))
+    base_path = os.path.normpath(os.path.join(script_dir, f'../schemas/{api_name}/'))
     main_schema = load_json_file(os.path.join(base_path, 'main.json'))
 
     for endpoint in main_schema['paths']:
-        # Strip extra spaces around the placeholder
         placeholder = main_schema['paths'][endpoint].strip().replace(" ", "")
         file_path = os.path.normpath(os.path.join(base_path, placeholder.strip("{}") + '.json'))
         
@@ -29,6 +28,10 @@ def build_spotify_schema():
     if not os.path.exists(build_dir):
         os.makedirs(build_dir)
 
-    save_json_file(main_schema, os.path.join(build_dir, 'spotify.json'))
+    save_json_file(main_schema, os.path.join(build_dir, f'{api_name}.json'))
 
-build_spotify_schema()
+def build_all_schemas():
+    build_api_schema('spotify')
+    build_api_schema('github')
+
+build_all_schemas()
