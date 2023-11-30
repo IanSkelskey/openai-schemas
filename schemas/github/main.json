@@ -1,0 +1,18 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "GitHub Repository Details",
+    "description": "Fetches details of a specified GitHub repository",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.github.com/",
+      "description": "GitHub API"
+    }
+  ],
+  "paths": {
+    "/repos/{owner}/{repo}": "{{ repos/owner/repo }}",
+    "/repos/{owner}/{repo}/contents/{path}": "{{ repos/owner/repo/contents/path }}"
+  }
+}
