@@ -1,8 +1,23 @@
 {
-	"type": "object",
-	"properties": {
-		"card": {
-			"$ref": "./card_details.json"
+	"operationId": "getCards",
+	"summary": "Retrieve a list of cards",
+	"responses": {
+	  "200": {
+		"description": "A list of cards",
+		"content": {
+		  "application/json": {
+			"schema": {
+			  "type": "object",
+			  "properties": {
+				"cards": {
+				  "type": "array",
+				  "items": { "$ref": "./card_details.json" }
+				}
+			  }
+			}
+		  }
 		}
+	  }
 	}
-}
+  }
+  

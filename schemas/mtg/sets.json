@@ -1,11 +1,23 @@
 {
-	"type": "object",
-	"properties": {
-		"sets": {
-			"type": "array",
-			"items": {
-				"$ref": "./set_details.json"
+	"operationId": "getSets",
+	"summary": "Retrieve a list of sets",
+	"responses": {
+	  "200": {
+		"description": "A list of sets",
+		"content": {
+		  "application/json": {
+			"schema": {
+			  "type": "object",
+			  "properties": {
+				"sets": {
+				  "type": "array",
+				  "items": { "$ref": "./set_details.json" }
+				}
+			  }
 			}
+		  }
 		}
+	  }
 	}
-}
+  }
+  
