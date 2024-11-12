@@ -1,0 +1,8 @@
+{
+	"type": "object",
+	"properties": {
+		"set": {
+			"$ref": "./set_details.json"
+		}
+	}
+}

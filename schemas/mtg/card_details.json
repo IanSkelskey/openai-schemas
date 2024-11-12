@@ -1,0 +1,82 @@
+{
+	"type": "object",
+	"properties": {
+		"name": {
+			"type": "string"
+		},
+		"manaCost": {
+			"type": "string"
+		},
+		"cmc": {
+			"type": "number"
+		},
+		"colors": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"type": {
+			"type": "string"
+		},
+		"supertypes": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"types": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"subtypes": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"rarity": {
+			"type": "string"
+		},
+		"set": {
+			"type": "string"
+		},
+		"text": {
+			"type": "string"
+		},
+		"artist": {
+			"type": "string"
+		},
+		"power": {
+			"type": "string"
+		},
+		"toughness": {
+			"type": "string"
+		},
+		"loyalty": {
+			"type": "string"
+		},
+		"multiverseid": {
+			"type": "integer"
+		},
+		"imageUrl": {
+			"type": "string"
+		},
+		"legalities": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"format": {
+						"type": "string"
+					},
+					"legality": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	}
+}

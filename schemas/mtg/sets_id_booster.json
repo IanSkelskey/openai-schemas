@@ -1,0 +1,11 @@
+{
+	"type": "object",
+	"properties": {
+		"cards": {
+			"type": "array",
+			"items": {
+				"$ref": "./card_details.json"
+			}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"type": "object",
+	"properties": {
+		"card": {
+			"$ref": "./card_details.json"
+		}
+	}
+}

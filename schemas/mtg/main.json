@@ -1,0 +1,25 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Magic The Gathering API",
+		"description": "Access information about Magic The Gathering cards and sets.",
+		"version": "1.0.0"
+	},
+	"servers": [
+		{
+			"url": "https://api.magicthegathering.io/v1",
+			"description": "Magic The Gathering API"
+		}
+	],
+	"paths": {
+		"/cards": "{{ cards }}",
+		"/cards/{id}": "{{ cards_id }}",
+		"/sets": "{{ sets }}",
+		"/sets/{id}": "{{ sets_id }}",
+		"/sets/{id}/booster": "{{ sets_id_booster }}",
+		"/types": "{{ types }}",
+		"/subtypes": "{{ subtypes }}",
+		"/supertypes": "{{ supertypes }}",
+		"/formats": "{{ formats }}"
+	}
+}

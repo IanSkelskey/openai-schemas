@@ -1,0 +1,24 @@
+{
+	"type": "object",
+	"properties": {
+		"code": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		},
+		"type": {
+			"type": "string"
+		},
+		"releaseDate": {
+			"type": "string",
+			"format": "date"
+		},
+		"booster": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		}
+	}
+}

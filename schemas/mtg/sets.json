@@ -1,0 +1,11 @@
+{
+	"type": "object",
+	"properties": {
+		"sets": {
+			"type": "array",
+			"items": {
+				"$ref": "./set_details.json"
+			}
+		}
+	}
+}
