@@ -2,28 +2,65 @@
 
 ## Overview
 
-This repository is dedicated to storing and sharing JSON schemas for custom GPTs (Generative Pre-trained Transformers). These schemas are designed to define the structure and expected data for various APIs, making it easier to integrate and work with different services using custom GPTs.
+This repository provides modularized JSON schemas for custom GPTs to integrate with several APIs. These schemas define expected data structures and endpoints, facilitating seamless interaction between GPTs and external APIs. Each API schema is organized into directories by API name, with modular endpoint schemas referenced by a main schema file.
 
 ## Contents
 
-### ![Github Logo](assets/github.svg) GitHub API Schema
+### ![GitHub Logo](assets/github.svg) GitHub API Schema
 
-- `github.json`: This schema defines the structure for fetching details of a specified GitHub repository. It outlines the necessary parameters, such as repository owner and name, and the expected response format, including repository details like name, description, creation date, and more.
+- **Directory**: `schemas/github/`
+- **Description**: Schemas for GitHub API endpoints to retrieve repository details.
+- **Main Schema**: `schemas/github/main.json` links to endpoint schemas.
+- **Endpoints**:
+  - `repos/owner/repo.json`: Details for a specified repository by owner and repo name.
+  - `repos/owner/repo/contents/path.json`: Retrieves contents of a repository path.
 
 ### ![Spotify Logo](assets/spotify.svg) Spotify API Schema
 
-- `spotify/`: Contains the modularized schema files for the Spotify API, with individual endpoint descriptions.
-  - `main.json`: Acts as the master file linking to all modular endpoint schemas.
-  - `audio-features.json`, `me/playlists.json`, etc.: Define specific endpoints.
+- **Directory**: `schemas/spotify/`
+- **Description**: Modularized schemas for Spotify API endpoints, covering audio features, playlists, and track information.
+- **Main Schema**: `schemas/spotify/main.json`
+- **Endpoints**:
+  - `audio-features.json` and `audio-features/track_id.json`: Information on audio features for a track or multiple tracks.
+  - `me/playlists.json`: Retrieves playlists for the current user.
+  - `playlists/playlist_id.json`: Information about a specific playlist.
+  - `playlists/playlist_id/images.json`: Playlist image information.
+  - `playlists/playlist_id/tracks.json`: Tracks within a specified playlist.
+  - `recommendations.json`: Recommendations based on various parameters.
+  - `search.json`: Search for items on Spotify.
+  - `tracks/track_id.json`: Specific track details.
+  - `users/user_id/playlists.json`: User's playlists.
 
-## Modular Endpoint Schemas
+### Magic: The Gathering API Schema
 
-The individual endpoint schemas for each API are stored in the parent directory for each API (e.g. `spotify/` for Spotify API). These schemas are modularized to allow for easier maintenance and updating of the schemas. The modular endpoint schemas are linked together by the main schema file (e.g. `spotify/main.json`).
+- **Directory**: `schemas/mtg/`
+- **Description**: Schemas for Magic: The Gathering API, covering cards, sets, and various classification types.
+- **Main Schema**: `schemas/mtg/main.json` provides a high-level structure for MTG API interactions.
+- **Endpoints**:
+  - `cards.json`: Retrieves a list of cards.
+  - `card_details.json`: Details for a specific card.
+  - `sets.json`: Retrieves a list of sets.
+  - `set_details.json`: Details for a specific set.
+  - `sets_id.json`: Retrieve a set by ID.
+  - `sets_id_booster.json`: Generate a booster pack for a specified set.
+  - `types.json`: List all card types.
+  - `subtypes.json`: List all card subtypes.
+  - `supertypes.json`: List all card supertypes.
+  - `formats.json`: Lists all game formats.
 
-### Building the Schema from Modules
+## Building the Schema from Modules
 
-- `npm run build`: Builds the master schema file `spotify/main.json` from the modular endpoint schemas in `spotify/`. Outputs to `build/spotify.json`.
+The `build.py` script consolidates endpoint schemas for each API into a single output JSON file per API.
 
-## Usage
+### Building Instructions
 
-These schemas can be used to create custom GPTs tailored for specific APIs. By defining the expected data structure, these schemas help in ensuring that the custom GPTs can interact effectively with the APIs, providing accurate and relevant responses.
+1. **Install Dependencies**:
+   ```bash
+   npm install
+
+2. **Run the Build Script**:
+   ```bash
+   npm run build
+   ```
+
+3. The output files will be located in the `build/` directory. (e.g., `build/github.json`, `build/spotify.json`, `build/mtg.json`)
