@@ -31,7 +31,7 @@ This repository provides modularized JSON schemas for custom GPTs to integrate w
   - `tracks/track_id.json`: Specific track details.
   - `users/user_id/playlists.json`: User's playlists.
 
-### Magic: The Gathering API Schema
+### ![Magic: The Gathering Logo](assets/mtg.svg) Magic: The Gathering API Schema
 
 - **Directory**: `schemas/mtg/`
 - **Description**: Schemas for Magic: The Gathering API, covering cards, sets, and various classification types.
