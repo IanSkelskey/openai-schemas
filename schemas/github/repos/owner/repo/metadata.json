@@ -1,0 +1,80 @@
+{
+	"get": {
+		"operationId": "getFileMetadata",
+		"summary": "Get File Metadata",
+		"description": "Retrieve metadata for a specified file or directory in a GitHub repository.",
+		"parameters": [
+			{
+				"name": "owner",
+				"in": "path",
+				"required": true,
+				"description": "Owner of the GitHub repository",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "repo",
+				"in": "path",
+				"required": true,
+				"description": "Name of the GitHub repository",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "path",
+				"in": "query",
+				"required": true,
+				"description": "Path to the file or directory",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful Response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"path": {
+									"type": "string"
+								},
+								"sha": {
+									"type": "string"
+								},
+								"size": {
+									"type": "integer"
+								},
+								"type": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "File or Directory Not Found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"message": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

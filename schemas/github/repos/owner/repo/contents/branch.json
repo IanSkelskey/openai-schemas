@@ -1,0 +1,101 @@
+{
+	"get": {
+		"operationId": "getRepositoryContentsByBranch",
+		"summary": "Get Repository Contents by Branch",
+		"description": "Fetches the contents of a specified file in a GitHub repository for a specific branch or tag.",
+		"parameters": [
+			{
+				"name": "owner",
+				"in": "path",
+				"required": true,
+				"description": "Owner of the GitHub repository",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "repo",
+				"in": "path",
+				"required": true,
+				"description": "Name of the GitHub repository",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "path",
+				"in": "query",
+				"required": false,
+				"description": "Path to the file",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"name": "ref",
+				"in": "query",
+				"required": true,
+				"description": "Branch or tag name",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Successful Response",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"path": {
+									"type": "string"
+								},
+								"sha": {
+									"type": "string"
+								},
+								"size": {
+									"type": "integer"
+								},
+								"url": {
+									"type": "string"
+								},
+								"git_url": {
+									"type": "string"
+								},
+								"download_url": {
+									"type": "string"
+								},
+								"type": {
+									"type": "string"
+								},
+								"_links": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				}
+			},
+			"404": {
+				"description": "Content Not Found",
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object",
+							"properties": {
+								"message": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
