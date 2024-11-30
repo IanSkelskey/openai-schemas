@@ -1,5 +1,5 @@
 {
-	"openapi": "3.0.0",
+	"openapi": "3.1.0",
 	"info": {
 		"title": "Magic The Gathering API",
 		"description": "Access information about Magic The Gathering cards and sets.",
@@ -12,14 +12,253 @@
 		}
 	],
 	"paths": {
-		"/cards": "{{ cards }}",
-		"/cards/{id}": "{{ cards_id }}",
-		"/sets": "{{ sets }}",
-		"/sets/{id}": "{{ sets_id }}",
-		"/sets/{id}/booster": "{{ sets_id_booster }}",
-		"/types": "{{ types }}",
-		"/subtypes": "{{ subtypes }}",
-		"/supertypes": "{{ supertypes }}",
-		"/formats": "{{ formats }}"
+		"/cards": {
+			"get": {
+				"operationId": "getCards",
+				"summary": "Retrieve a list of cards",
+				"responses": {
+					"200": {
+						"description": "A list of cards",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"cards": {
+											"type": "array",
+											"items": {
+												"$ref": "./card_details.json"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/cards/{id}": {
+			"get": {
+				"operationId": "getCardById",
+				"summary": "Retrieve a specific card by ID",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A specific card",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "./card_details.json"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/sets": {
+			"get": {
+				"operationId": "getSets",
+				"summary": "Retrieve a list of sets",
+				"responses": {
+					"200": {
+						"description": "A list of sets",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"sets": {
+											"type": "array",
+											"items": {
+												"$ref": "./set_details.json"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/sets/{id}": {
+			"get": {
+				"operationId": "getSetById",
+				"summary": "Retrieve a specific set by ID",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A specific set",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "./set_details.json"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/sets/{id}/booster": {
+			"get": {
+				"operationId": "generateBooster",
+				"summary": "Generate a booster pack for a set",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A generated booster pack",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"cards": {
+											"type": "array",
+											"items": {
+												"$ref": "./card_details.json"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/types": {
+			"get": {
+				"operationId": "getTypes",
+				"summary": "Retrieve all card types",
+				"responses": {
+					"200": {
+						"description": "A list of card types",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"types": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/subtypes": {
+			"get": {
+				"operationId": "getSubtypes",
+				"summary": "Retrieve all card subtypes",
+				"responses": {
+					"200": {
+						"description": "A list of card subtypes",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"subtypes": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/supertypes": {
+			"get": {
+				"operationId": "getSupertypes",
+				"summary": "Retrieve all card supertypes",
+				"responses": {
+					"200": {
+						"description": "A list of card supertypes",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"supertypes": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/formats": {
+			"get": {
+				"operationId": "getFormats",
+				"summary": "Retrieve all game formats",
+				"responses": {
+					"200": {
+						"description": "A list of game formats",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"formats": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }

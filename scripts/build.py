@@ -10,7 +10,6 @@ def save_json_file(data, file_path):
         json.dump(data, file, indent=4)
 
 def resolve_references(schema, base_path):
-    """Recursively resolve $ref in the schema and inline them."""
     if isinstance(schema, dict):
         if "$ref" in schema:
             ref_path = schema["$ref"].strip("./")
@@ -27,6 +26,11 @@ def resolve_references(schema, base_path):
     else:
         return schema
 
+def format_operation_id(endpoint, method="get"):
+    """Generate a valid operationId based on the endpoint and HTTP method."""
+    sanitized_path = endpoint.replace("{", "").replace("}", "").replace("/", "_").strip("_")
+    return f"{method}_{sanitized_path}"
+
 def build_api_schema(api_name):
     script_dir = os.path.dirname(__file__)
     base_path = os.path.normpath(os.path.join(script_dir, f'../schemas/{api_name}/'))
@@ -39,15 +43,13 @@ def build_api_schema(api_name):
             if os.path.exists(file_path):
                 endpoint_schema = load_json_file(file_path)
                 inlined_schema = resolve_references(endpoint_schema, base_path)
-                if "operationId" not in inlined_schema:
-                    inlined_schema["operationId"] = f"{endpoint.replace('/', '_').strip('_')}_get"
+                inlined_schema["operationId"] = format_operation_id(endpoint, "get")
                 main_schema['paths'][endpoint] = { "get": inlined_schema }
             else:
                 print(f"Warning: File not found for endpoint '{endpoint}': {file_path}")
         else:
             inlined_schema = resolve_references(placeholder, base_path)
-            if "operationId" not in inlined_schema:
-                inlined_schema["operationId"] = f"{endpoint.replace('/', '_').strip('_')}_get"
+            inlined_schema["operationId"] = format_operation_id(endpoint, "get")
             main_schema['paths'][endpoint] = { "get": inlined_schema }
 
     build_dir = os.path.normpath(os.path.join(script_dir, '../build/'))
@@ -63,5 +65,4 @@ def build_all_schemas():
     build_api_schema('github')
     build_api_schema('mtg')  # Build schema for Magic: The Gathering API
 
-# Run the build process for all APIs
 build_all_schemas()
